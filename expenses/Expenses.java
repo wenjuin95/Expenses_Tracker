@@ -1,11 +1,11 @@
-package Expenses_Tracker.expenses;
+package expenses;
 
 import java.util.Scanner;
 
 public class Expenses {
 
 	public static void main(String[] args) {
-		String fileName = "expenses.xls";
+		String fileName = "expenses.db";
 		ExpensesTracker expenseTracker = new ExpensesTracker();
 		Scanner in = new Scanner(System.in);
 

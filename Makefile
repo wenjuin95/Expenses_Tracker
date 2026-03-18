@@ -5,16 +5,17 @@ GREEN_HIGHLIGHT = \033[32m
 RESET_HIGHLIGHT = \033[0m
 
 JVM = java
-CP = .
+CP = expenses_class:libs/*
 
-SRC := $(wildcard *.java)
+SRC := $(wildcard expenses/*.java)
 
 .PHONY: all compile run clean
 
 all: compile
 
 compile:
-	@$(JCC) $(JFLAG) -d . $(SRC)
+	mkdir -p expenses_class
+	@$(JCC) $(JFLAG) -cp $(CP) -d expenses_class $(SRC)
 	@echo "${GREEN_HIGHLIGHT}Compilation successful.${RESET_HIGHLIGHT}"
 
 run: compile
@@ -22,6 +23,5 @@ run: compile
 	@$(JVM) -cp $(CP) expenses.Expenses
 
 clean:
-	@find . -name '*.class' -delete
-	@rm -rf expenses/
+	@rm -rf expenses_class
 	@echo "${GREEN_HIGHLIGHT}Cleaned up class files and expenses directory.${RESET_HIGHLIGHT}"
