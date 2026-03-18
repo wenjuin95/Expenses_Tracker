@@ -8,7 +8,16 @@ public class Expenses {
 		String fileName = "expenses.db";
 		ExpensesTracker expenseTracker = new ExpensesTracker();
 		Scanner in = new Scanner(System.in);
-
+		String header =
+		  "  ______                                       _______             _             \n"
+		+ " |  ____|                                     |__   __|           | |            \n"
+		+ " | |__  __  ___ __   ___ _ __  ___  ___  ___     | |_ __ __ _  ___| | _____ _ __ \n"
+		+ " |  __| \\ \\/ / '_ \\ / _ \\ '_ \\/ __|/ _ \\/ __|    | | '__/ _` |/ __| |/ / _ \\ '__|\n"
+		+ " | |____ >  <| |_) |  __/ | | \\__ \\  __/\\__ \\    | | | | (_| | (__|   <  __/ |   \n"
+		+ " |______/_/\\_\\ .__/ \\___|_| |_|___/\\___||___/    |_|_|  \\__,_|\\___|_|\\_\\___|_|   \n"
+		+ "            | |                                                                 \n"
+		+ "            |_|                                                                 \n";
+		System.out.println(Color.PURPLE + header + Color.RESET);
 		while (true) {
 			System.out.println(Color.PURPLE + "=========== Expenses Tracker Menu ===========" + Color.RESET);
 			System.out.print(Color.CYAN + "0 | add income\n1 | add expenses\n2 | view expenses\n3 | delete expenses\n4 | exit\nEnter your choice: " + Color.RESET);
