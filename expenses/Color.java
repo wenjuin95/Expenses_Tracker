@@ -1,4 +1,4 @@
-package expenses;
+package Expenses_Tracker.expenses;
 
 public class Color {
 	public static String RED = "\u001B[31m";

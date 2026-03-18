@@ -1,4 +1,4 @@
-package expenses;
+package Expenses_Tracker.expenses;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -11,6 +11,11 @@ public class ExpensesTracker {
 		return sdf.format(new java.util.Date());
 	}
 
+	/**
+	 * Prompt the user to enter the amount of income into the file
+	 * @param fileName the name of the file to write to
+	*/
+	//TODO do exception
 	public void addIncome(String fileName) {
 		try {
 			File fileRead = new File(fileName);
@@ -47,6 +52,11 @@ public class ExpensesTracker {
 		}
 	}
 
+	/**
+	 * View all expenses and income from the file
+	 * @param fileName the name of the file to read from
+	 * @detail read the file and display the date, item, and amount of each entry, as well as the total income, total expenses, and remaining balance
+	*/
 	public void viewExpenses(String fileName) {
 		File myFile = new File(fileName);
 		try (Scanner sc = new Scanner(myFile)) {
@@ -91,6 +101,11 @@ public class ExpensesTracker {
 		}
 	}
 
+	/**
+	 * Add an expense to the file
+	 * @param fileName the name of the file to write to
+	 * @detail prompt the user to enter the item name and amount of the expense, it also check the duplicate item name in the file.
+	*/
 	public void addExpenses(String fileName) {
 		try {
 			File fileRead = new File(fileName);
@@ -159,6 +174,11 @@ public class ExpensesTracker {
 		}
 	}
 
+	/**
+	 * Remove an expense from the file
+	 * @param fileName the name of the file to modify
+	 * @detail prompt the user to enter the item name of the expense to remove
+	*/
 	public void removeExpenses(String fileName) {
 		File inputFile = new File(fileName);
 		File tempFile = new File(fileName + ".tmp");
