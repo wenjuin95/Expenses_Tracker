@@ -1,3 +1,4 @@
 expenses.db
 libs/*
+!libs/.gitkeep
 expenses/
