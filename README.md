@@ -1,4 +1,5 @@
 # Expenses Tracker
+![expenses](https://github.com/wenjuin95/Expenses_Tracker/blob/main/expenses_tracker.png)
 
 A command-line Expenses Tracker application written in Java that uses SQLite to store income and expense records locally.
 
