@@ -7,4 +7,5 @@ public class Color {
 	public static String CYAN = "\u001B[36m";
 	public static String PURPLE = "\u001B[35m";
 	public static String RESET = "\u001B[0m";
+	public static String GRAY = "\u001B[90m";
 }

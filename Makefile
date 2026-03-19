@@ -9,12 +9,10 @@ CP = expenses_class:libs/*
 
 SRC := $(wildcard expenses/*.java)
 
-.PHONY: all compile run clean
-
 all: compile
 
 compile:
-	mkdir -p expenses_class
+	@mkdir -p expenses_class
 	@$(JCC) $(JFLAG) -cp $(CP) -d expenses_class $(SRC)
 	@echo "${GREEN_HIGHLIGHT}Compilation successful.${RESET_HIGHLIGHT}"
 
@@ -25,3 +23,7 @@ run: compile
 clean:
 	@rm -rf expenses_class
 	@echo "${GREEN_HIGHLIGHT}Cleaned up class files and expenses directory.${RESET_HIGHLIGHT}"
+
+re: clean all
+
+.PHONY: all compile run clean re

@@ -19,7 +19,7 @@ public class Expenses {
 		+ "            |_|                                                                 \n";
 		System.out.println(Color.PURPLE + header + Color.RESET);
 		while (true) {
-			System.out.println(Color.PURPLE + "=========== Expenses Tracker Menu ===========" + Color.RESET);
+			System.out.println(Color.PURPLE + "\n============= Expenses Tracker Menu =============" + Color.RESET);
 			System.out.print(Color.CYAN + "0 | add income\n1 | add expenses\n2 | view expenses\n3 | delete expenses\n4 | exit\nEnter your choice: " + Color.RESET);
 			String choiceStr = in.nextLine();
 			if (choiceStr.isEmpty()) {

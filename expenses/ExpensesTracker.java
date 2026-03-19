@@ -43,11 +43,17 @@ public class ExpensesTracker {
 	public void addIncome(String dbPath) {
 		Scanner in = new Scanner(System.in);
 		Double incomeAmount = null;
+		System.out.println("=================================================");
+		System.out.println(Color.GRAY + "(Type 'menu' to return to the main menu.)" + Color.RESET);
 
 		// get valid amount
 		while (true) {
 			System.out.print("Enter amount: ");
 			String lineAmount = in.nextLine().trim();
+			if(lineAmount.equals("menu")) {
+				System.out.println("Returning to main menu...");
+				return;
+			}
 			if (lineAmount.isEmpty()) {
 				System.out.println(Color.RED + "Amount cannot be empty. Please try again." + Color.RESET);
 				continue;
@@ -69,7 +75,7 @@ public class ExpensesTracker {
 		try (Connection conn = this.connect(dbPath);
 			 PreparedStatement pstmt = conn.prepareStatement(sql)) {
 			pstmt.setString(1, timeStamp());
-			pstmt.setString(2, "Income");
+			pstmt.setString(2, "income");
 			pstmt.setDouble(3, incomeAmount);
 			pstmt.setString(4, "INCOME");
 			pstmt.executeUpdate();
@@ -142,11 +148,17 @@ public class ExpensesTracker {
 		Scanner in = new Scanner(System.in);
 		String item;
 		Double amount;
+		System.out.println("=================================================");
+		System.out.println(Color.GRAY + "(Type 'menu' to return to the main menu.)" + Color.RESET);
 
 		// get valid item name and ensure no duplicate (case-insensitive)
 		while (true) {
 			System.out.print("Enter item name: ");
 			item = in.nextLine().trim();
+			if (item.equals("menu")) {
+				System.out.println("Returning to main menu...");
+				return;
+			}
 			if (item.isEmpty()) {
 				System.out.println(Color.RED + "Item name cannot be empty. Please try again." + Color.RESET);
 				continue;
@@ -156,7 +168,8 @@ public class ExpensesTracker {
 				continue;
 			}
 
-			String checkSql = "SELECT COUNT(*) FROM transactions WHERE LOWER(item) = LOWER(?) AND type = 'EXPENSE'";
+			//check for duplicate item name in the database
+			String checkSql = "SELECT COUNT(*) FROM transactions WHERE LOWER(item) = LOWER(?)";
 			try (Connection conn = this.connect(dbPath);
 				 PreparedStatement ps = conn.prepareStatement(checkSql)) {
 				ps.setString(1, item);
@@ -177,6 +190,11 @@ public class ExpensesTracker {
 		while (true) {
 			System.out.print("Enter amount: ");
 			String lineAmount = in.nextLine().trim();
+			if (lineAmount.equals("menu")) {
+				item = null;
+				System.out.println("Returning to main menu...");
+				return;
+			}
 			if (lineAmount.isEmpty()) {
 				System.out.println(Color.RED + "Amount cannot be empty. Please try again." + Color.RESET);
 				continue;
@@ -216,8 +234,14 @@ public class ExpensesTracker {
 	*/
 	public void removeExpenses(String dbPath) {
 			Scanner in = new Scanner(System.in);
+			System.out.println("=================================================");
+			System.out.println(Color.GRAY + "(Type 'menu' to return to the main menu.)" + Color.RESET);
 			System.out.print("Enter item name to remove: ");
 			String itemToRemove = in.nextLine();
+			if (itemToRemove.equals("menu")) {
+				System.out.println("Returning to main menu...");
+				return;
+			}
 
 			String sql = "DELETE FROM transactions WHERE item = ?";
 
